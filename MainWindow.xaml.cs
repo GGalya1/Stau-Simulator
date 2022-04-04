@@ -39,7 +39,7 @@ namespace WpfApp3
 
         private void animiere(object sender, EventArgs e)
         {
-            //Zeichenfläche.Children.RemoveRange();
+            Zeichenfläche.Children.Clear();//hier loscht man die Spuren
             foreach (Auto item in autos)
             {
                 item.Bewegen(timer.Interval);

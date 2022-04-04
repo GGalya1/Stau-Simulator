@@ -25,8 +25,8 @@ namespace WpfApp3
         {
             PositionX = 400 * rnd.NextDouble();
             PositionY = 400 * rnd.NextDouble();
-            GeschwindigkeitX = 280 + 40 * rnd.NextDouble();
-            GeschwindigkeitY = 280 + 40 * rnd.NextDouble();
+            GeschwindigkeitX = 800 + 400 * rnd.NextDouble();
+            GeschwindigkeitY = 800 + 400 * rnd.NextDouble();
         }
 
         //Methoden

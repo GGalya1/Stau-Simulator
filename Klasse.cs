@@ -13,7 +13,7 @@ namespace WpfApp3
     {
         //Eigenschaften
         public double PositionX { get; private set; }
-        public double PostitionY { get; private set; }
+        public double PositionY { get; private set; }
 
         public double GeschwindigkeitX { get; private set; }
         public double GeschwindigkeitY { get; private set; }
@@ -23,10 +23,10 @@ namespace WpfApp3
         //Konstruktor
         public Auto(Canvas Zeichenfläche)
         {
-            PositionX = Zeichenfläche.ActualWidth * rnd.NextDouble();
-            PostitionY = Zeichenfläche.ActualHeight * rnd.NextDouble();
-            GeschwindigkeitX = 8 + 4 * rnd.NextDouble();
-            GeschwindigkeitY = 8 + 4 * rnd.NextDouble();
+            PositionX = 400 * rnd.NextDouble();
+            PositionY = 400 * rnd.NextDouble();
+            GeschwindigkeitX = 280 + 40 * rnd.NextDouble();
+            GeschwindigkeitY = 280 + 40 * rnd.NextDouble();
         }
 
         //Methoden
@@ -36,14 +36,15 @@ namespace WpfApp3
             e.Width = 10;
             e.Height = 10;
             e.Fill = Brushes.Aquamarine;
-            Canvas.SetLeft(e, 300);
-            Canvas.SetTop(e, 300);
+            Canvas.SetLeft(e, PositionX);
+            Canvas.SetTop(e, PositionY);
             Zeichenfläche.Children.Add(e);
         }
 
-        public void Bewegen()
+        public void Bewegen(TimeSpan intervall)
         {
-
+            PositionX += GeschwindigkeitX * intervall.TotalMinutes;
+            PositionY += GeschwindigkeitY * intervall.TotalMinutes;
         }
         
     }

@@ -31,11 +31,20 @@ namespace WpfApp3
             timer.Start();
             timer.Tick += animiere;// Blitzt ist ein Eventhandler
 
-            autos[0] = 
+            for (int i = 0; i<3; i++)
+            {
+                autos[i] = new Auto(Zeichenfläche);
+            }
         }
 
-        private void animiere(objekt sender, EventArgs e)
+        private void animiere(object sender, EventArgs e)
         {
+            //Zeichenfläche.Children.RemoveRange();
+            foreach (Auto item in autos)
+            {
+                item.Bewegen(timer.Interval);
+                item.Zeichne(Zeichenfläche);
+            }
 
         }
     }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp3
 {
@@ -20,9 +21,21 @@ namespace WpfApp3
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer timer = new DispatcherTimer();
+        Auto[] autos = new Auto[3];
+
         public MainWindow()
         {
             InitializeComponent();
+            timer.Interval = TimeSpan.FromMilliseconds(17);
+            timer.Start();
+            timer.Tick += animiere;// Blitzt ist ein Eventhandler
+
+            autos[0] = 
+        }
+
+        private void animiere(objekt sender, EventArgs e)
+        {
 
         }
     }

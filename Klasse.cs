@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    class Klasse
+    class Auto
     {
         //Eigenschaften
         public double PositionX { get; private set; }

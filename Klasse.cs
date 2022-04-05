@@ -23,10 +23,10 @@ namespace WpfApp3
         //Konstruktor
         public Auto(Canvas Zeichenfläche)
         {
-            PositionX = 400 * rnd.NextDouble();
-            PositionY = 400 * rnd.NextDouble();
-            GeschwindigkeitX = 800 + 400 * rnd.NextDouble();
-            GeschwindigkeitY = 800 + 400 * rnd.NextDouble();
+            PositionX = rnd.Next(0, Convert.ToInt32(Zeichenfläche.Width));
+            PositionY = rnd.Next(0, Convert.ToInt32(Zeichenfläche.Height));
+            GeschwindigkeitX = (800 + 400 * rnd.NextDouble()) * rnd.Next(-1,2);
+            GeschwindigkeitY = (800 + 400 * rnd.NextDouble()) *rnd.Next(-1, 2);
         }
 
         //Methoden
@@ -35,16 +35,47 @@ namespace WpfApp3
             Ellipse e = new Ellipse();
             e.Width = 10;
             e.Height = 10;
-            e.Fill = Brushes.Aquamarine;
+            if (GeschwindigkeitX == 0 && GeschwindigkeitY == 0)
+            {
+                e.Fill = Brushes.MediumVioletRed;
+            }
+            else
+                e.Fill = Brushes.Aquamarine;
             Canvas.SetLeft(e, PositionX);
             Canvas.SetTop(e, PositionY);
             Zeichenfläche.Children.Add(e);
         }
 
-        public void Bewegen(TimeSpan intervall)
+        public void Bewegen(TimeSpan intervall, Canvas Zeichenfläche)
         {
             PositionX += GeschwindigkeitX * intervall.TotalMinutes;
             PositionY += GeschwindigkeitY * intervall.TotalMinutes;
+
+            if (PositionX >= Convert.ToDouble(Zeichenfläche.Width))
+            {
+                PositionX = 0;
+            }
+            else if (PositionX <= 0)
+            {
+                PositionX = Convert.ToDouble(Zeichenfläche.Width);
+            }
+            
+            if (PositionY >= Convert.ToDouble(Zeichenfläche.Height))
+            {
+                PositionY = 0;
+            }
+            else if (PositionY <= 0)
+            {
+                PositionY = Convert.ToDouble(Zeichenfläche.Height);
+            }
+
+
+        }
+
+        public void Beschleunigen(double a)
+        {
+            GeschwindigkeitX *= a;
+            GeschwindigkeitY *= a;
         }
         
     }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Canvas x:Name="Zeichenfläche">
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <Canvas x:Name="Zeichenfläche" Width="800" Height="420">
         
     </Canvas>
 </Window>
